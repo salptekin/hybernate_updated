@@ -15,9 +15,7 @@ public class RunnerFetch04 {
 	public static void main(String[] args) {
 		
 		Students04 student = new Students04();
-		new Books04();
-		new Books04();
-		new Books04();
+		Books04 book = new Books04();
 		
 		Configuration con = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Students04.class).addAnnotatedClass(Books04.class);
 		SessionFactory sf = con.buildSessionFactory();
@@ -25,52 +23,61 @@ public class RunnerFetch04 {
 		
 		Transaction tx = session.beginTransaction();
 		
-		/*
-		   If you type the like the following, it will return information just for the
-		   student whose id is 1005 and the books whose ids are 101, 102, 103
-		*/
-		
-		//How to fetch all books for a specific student
+		//Example 1: Fetch all books of a student by using get() method		
 //		student = session.get(Students04.class, 1005);
-//		
 //		for(Books04 w : student.getBooksList()) {
 //			System.out.println(w);
 //		}
 		
-		//How to use SQL Query in Hibernate (OneToMany - INNER JOIN)
+		//Example 2: Fetch student who owns a book by using get() method		
+//		book = session.get(Books04.class, 103);
+//		System.out.println(session.get(Students04.class, book.getStudent().getId()));
+		
+		//Example 3: Fetch student name, book name of common records from Students04 and Books04 tables (INNER JOIN)
+		//1.Way: By using SQL Queries
 //		String sqlQuery1 = "SELECT s.students_name, b.book \n"
 //							+ "FROM Students04 s INNER JOIN Books04 b \n"
 //							+ "ON s.id = b.student_id";
-//		List<Object[]> std01 = session.createSQLQuery(sqlQuery1).list();
-//		for(Object[] w : std01) {
-//			System.out.println("1) " + w[0] + " - " + w[1]);
+//		List<Object[]> std1 = session.createSQLQuery(sqlQuery1).list();
+//		for(Object[] w : std1) {
+//			System.out.println(Arrays.toString(w));
+//		}
+//		//Or
+//		for(Object[] w : std1) {
+//			System.out.println(w[0] + " - " + w[1]);
 //		}
 		
-		//How to use HQL Query in Hibernate (OneToMany - INNER JOIN)
+		//2.Way: By using HQL Queries
 //		String hqlQuery1 = "SELECT s.name, b.book FROM Students04 s INNER JOIN FETCH Books04 b ON s.id = b.student";
-//		List<Object[]> std02 = session.createQuery(hqlQuery1).getResultList();
-//		for(Object[] w : std02) {
-//			System.out.println("1) " + Arrays.toString(w));
+//		List<Object[]> std2 = session.createQuery(hqlQuery1).getResultList();
+//		for(Object[] w : std2) {
+//			System.out.println(Arrays.toString(w));
 //	    }
+//		//Or
+//		for(Object[] w : std2) {
+//			System.out.println(w[0] + " - " + w[1]);
+//		}
 		
-		//How to use HQL Query in Hibernate (OneToMany - LEFT JOIN)
+		//Example 4: Fetch student name, book name of records from Students04 table (LEFT JOIN)
+        //Use just HQL
 //		String hqlQuery2 = "SELECT s.name, b.book FROM Students04 s LEFT JOIN FETCH Books04 b ON s.id = b.student";
 //		List<Object[]> std02 = session.createQuery(hqlQuery2).getResultList();
 //		for(Object[] w : std02) {
 //			System.out.println("3) " + Arrays.toString(w));
 //	    }
 		
-		//How to use HQL Query in Hibernate (OneToMany - RIGHT JOIN)
+		//Example 5: Fetch student name, book name of records from Books04 table (RIGHT JOIN)
+        //Use just HQL
 //		String hqlQuery3 = "SELECT s.name, b.book FROM Students04 s RIGHT JOIN FETCH Books04 b ON s.id = b.student";
-//		List<Object[]> std03 = session.createQuery(hqlQuery3).getResultList();
-//		for(Object[] w : std03) {
-//			System.out.println("4) " + Arrays.toString(w));
+//		List<Object[]> std3 = session.createQuery(hqlQuery3).getResultList();
+//		for(Object[] w : std3) {
+//			System.out.println(Arrays.toString(w));
 //	    }
 		
-		//How to use HQL Query in Hibernate (OneToMany - FULL JOIN)
+		//Example 6: Fetch student name, book name of all records from Students04 and Books04 table (FULL JOIN)
 //		String hqlQuery4 = "SELECT s.name, b.book FROM Students04 s FULL JOIN FETCH Books04 b ON s.id = b.student";
-//		List<Object[]> std04 = session.createQuery(hqlQuery4).getResultList();
-//		for(Object[] w : std04) {
+//		List<Object[]> std4 = session.createQuery(hqlQuery4).getResultList();
+//		for(Object[] w : std4) {
 //			System.out.println("5) " + Arrays.toString(w));
 //	    }
 		

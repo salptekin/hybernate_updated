@@ -42,6 +42,9 @@ public class RunnerSave03 {
 		session.save(student2);
 		
 		tx.commit();
+		
+		session.close();
+		sf.close();
 
 	}
 

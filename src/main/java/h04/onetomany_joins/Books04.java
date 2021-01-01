@@ -15,7 +15,7 @@ public class Books04 {
     private String book;
     
     @ManyToOne  //Many books belong to One student
-    @JoinColumn
+    @JoinColumn(name = "student_id")
     private Students04 student;
 
 	public int getId() {
