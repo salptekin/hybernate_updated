@@ -1,7 +1,8 @@
-package com.hibernate.hibernate_demo04;
+package h04.onetomany_joins;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,6 +15,7 @@ public class Books04 {
     private String book;
     
     @ManyToOne  //Many books belong to One student
+    @JoinColumn
     private Students04 student;
 
 	public int getId() {

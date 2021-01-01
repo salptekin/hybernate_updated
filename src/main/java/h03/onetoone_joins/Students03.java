@@ -6,9 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 /*
- 	1)One To One: Student ---> Diary (Dayri diye okunur)
- 	2)One to Many: Student ---> Course Books
- 	3)Many To Many: Students ---> Library Books
+ 	One To One: Student ---> Diary (Dayri diye okunur)
 */
 
 @Entity

@@ -1,4 +1,4 @@
-package com.hibernate.hibernate_demo04;
+package h04.onetomany_joins;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,7 @@ import javax.persistence.OneToMany;
 
 
 /*
- 	1)One To One: Student ---> Diary (Dayri diye okunur)
- 	2)One to Many: Student ---> Course Books
- 	3)Many To Many: Students ---> Library Books
+ 	One to Many: Student ---> Course Books
 */
 
 @Entity

@@ -6,13 +6,13 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import org.hibernate.cfg.Configuration;
 
 /*
- 	1)One To One: Student ---> Diary (Dayri diye okunur)
- 	2)One to Many: Student ---> Course Books
  	3)Many To Many: Students ---> Library Books
 */
 
@@ -34,7 +34,11 @@ public class Students05 {
 	        2 tables are not needed to create relationship between two tables 
 	        to prevent that we should use @mappedBy("students")
 	 */
-	@ManyToMany(mappedBy="students")
+	@ManyToMany(mappedBy = "students")
+//	@JoinTable(
+//            name = "Students05",
+//            joinColumns ={@JoinColumn (name = "id")}
+//    )
 	private List<Books05> books = new ArrayList<Books05>();
 	
 	public int getId() {

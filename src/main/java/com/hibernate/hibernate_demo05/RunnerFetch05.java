@@ -18,7 +18,7 @@ public class RunnerFetch05 {
 		
 		Transaction tx = session.beginTransaction();
 		
-		student = session.get(Students05.class, 1006);
+		student = session.get(Students05.class, 1005);
 		books = session.get(Books05.class, 101);
 		tx.commit();
 		

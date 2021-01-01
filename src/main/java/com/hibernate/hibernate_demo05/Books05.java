@@ -2,9 +2,10 @@ package com.hibernate.hibernate_demo05;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -21,6 +22,10 @@ public class Books05 {
 	  annotation and you need to create a list for students.
 	 */    
     @ManyToMany//Many books belong to many student
+//    @JoinTable(
+//            name = "Students05",
+//            joinColumns ={@JoinColumn (name = "id")}
+//    )
     private List<Students05> students = new ArrayList<Students05>();
 
 	public int getId() {

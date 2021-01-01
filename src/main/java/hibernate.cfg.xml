@@ -21,9 +21,11 @@
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
 		<property name="hibernate.cache.provider_class">org.hibernate.cache.internal.EhcacheProvider</property>
 		
+		<mapping class = "h04.onetomany_joins.Students04"/>
+		<mapping class = "h04.onetomany_joins.Books04"/>
 		
-		<mapping class = "h03.onetoone_joins.Students03"/>
-		<mapping class = "h03.onetoone_joins.Diary"/>
+<!-- 		<mapping class = "h03.onetoone_joins.Students03"/>
+		<mapping class = "h03.onetoone_joins.Diary"/> -->
 
     </session-factory>
 </hibernate-configuration>
