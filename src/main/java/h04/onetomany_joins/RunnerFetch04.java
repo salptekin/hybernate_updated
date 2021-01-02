@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import h03.onetoone_joins.Students03;
+import h05.onetomany_joins.Answer;
 
 public class RunnerFetch04 {
 
