@@ -2,6 +2,8 @@ package h04.onetomany_joins;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -29,7 +31,7 @@ public class Students04 {
 	*/
 	
 	//@OneToMany ==> One student has many books
-	@OneToMany(mappedBy="student") 
+	@OneToMany(mappedBy="student", cascade = CascadeType.ALL, orphanRemoval = true) 
 	private List<Books04> booksList = new ArrayList<Books04>();
 	
 	public int getId() {

@@ -82,6 +82,69 @@ public class RunnerFetch04 {
 //			System.out.println("5) " + Arrays.toString(w));
 //	    }
 		
+		//How to delete all records from a table
+		//You can delete records from child table
+		//1.Way: SQL
+//		String sqlQuery5 = "DELETE FROM books04";
+//		int numOfRec1 = session.createSQLQuery(sqlQuery5).executeUpdate();
+//		System.out.println(numOfRec1);
+		
+		//2.Way: HQL
+//		String hqlQuery6 = "DELETE FROM Books04";
+//		int numOfRec2 = session.createQuery(hqlQuery6).executeUpdate();
+//		System.out.println("The number of deleted records: " + numOfRec2);
+
+		//How to delete a record by using book name
+		//You can delete records from child table
+//		String hqlQuery6 = "DELETE FROM Books04 b WHERE b.book_name = 'Science book'";
+//		int numOfRec2 = session.createQuery(hqlQuery6).executeUpdate();
+//		System.out.println("The number of deleted records: " + numOfRec2);
+		
+		//How to delete a record by using foreign key values
+		//You can delete records from child table
+//		String hqlQuery7 = "DELETE FROM Books04 b WHERE b.student = 1001";
+//		int numOfRec3 = session.createQuery(hqlQuery7).executeUpdate();
+//		System.out.println("The number of deleted records: " + numOfRec3);
+		
+		
+		//*************************************************
+		
+		//How to delete a record by using delete() method.
+		//delete(<Object Name>)
+//		book = session.get(Books04.class, 101);
+//		session.delete(book);
+		
+		//delete(<Entity Name as String>, <Object Name>)
+//		book = session.get(Books04.class, 102);
+//		session.delete("Books04", book);
+		
+		//How to delete a record from parent table
+		//If a table is parent table of another table in datastore, 
+		//the code will throw a "ConstraintViolationException" at runtime
+		//"integrity constraint (HR.FKKLT4C2MDSD0YCLDO0GOQRJTB7) violated - child record found"
+        //Both ways throw same exception
+		//1.Way:
+//		String hqlQuery8 = "DELETE FROM Students04 s WHERE s.std_id = 1002";
+//		int numOfRec4 = session.createQuery(hqlQuery8).executeUpdate();
+//		System.out.println("The number of deleted records: " + numOfRec4);
+		//2.Way:
+//		student = session.get(Students04.class, 1002);
+//		session.delete(student);
+		
+		//To be able to delete a record from parent table you need to delete the record from the child table first
+		//1.Way: Not Recommended
+//		book = session.get(Books04.class, 103);
+//		session.delete(book);
+//		
+//		student = session.get(Students04.class, 1002);
+//		session.delete(student);
+		
+		//2.Way: a)Go to parent class
+		//       b)Change the @OneToMany(mappedBy = "student") to 
+		//         @OneToMany(mappedBy = "student", orphanRemoval = true, cascade = CascadeType.ALL)
+//		student = session.get(Students04.class, 1002);
+//		session.delete(student);
+		
 		tx.commit();
 
 	}

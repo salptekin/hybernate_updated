@@ -3,6 +3,7 @@ package com.hibernate.hibernate_demo05;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -10,30 +11,31 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Books05 {
-	/*
-	  If you do not use @Id annotation, it gives error. 
-	 */
+
 	@Id
-	private int id;
+	private int book_id;
     private String book;
     
     /*
-	  When you want to create "Many To Many" relationship between two tables you need to use @ManyToMany
-	  annotation and you need to create a list for students.
-	 */    
-    @ManyToMany//Many books belong to many student
-//    @JoinTable(
-//            name = "Students05",
-//            joinColumns ={@JoinColumn (name = "id")}
-//    )
+	  When you want to create "Many To Many" relationship between two tables 
+	  you need to use @ManyToMany annotation to create the many-to-many relationship between the entities.
+	*/ 
+    
+    /*
+      Note: If you do not use @mappedBy("students"), it will create 2 extra different tables
+	        because Books table creates books_students05 table and Students05 table creates students05_books table.
+	        2 tables are not needed to create relationship between two tables 
+	        to prevent that we should use @mappedBy("students")
+    */
+    @ManyToMany(mappedBy = "books")//Many books belong to many student
     private List<Students05> students = new ArrayList<Students05>();
 
-	public int getId() {
-		return id;
+	public int getBook_id() {
+		return book_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setBook_id(int book_id) {
+		this.book_id = book_id;
 	}
 
 	public String getBook() {
@@ -51,9 +53,14 @@ public class Books05 {
 		this.students = students;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Books [id=" + book_id + ", book=" + book + ", student=" + students + "]";
+//	}
+	
 	@Override
 	public String toString() {
-		return "Books [id=" + id + ", book=" + book + ", student=" + students + "]";
+		return "Books [id=" + book_id + ", book=" + book + "]";
 	}
     
 }

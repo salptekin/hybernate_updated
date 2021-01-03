@@ -15,19 +15,19 @@ public class RunnerSave05 {
 		Students05 student2 = new Students05();
 		Students05 student3 = new Students05();
 		
-		student1.setId(1005);
+		student1.setStd_id(1005);
 		student1.setName("Beyhan Can");
 		student1.setGrade(11);
 		student1.getBooks().add(bookArt);
 		student1.getBooks().add(bookMath);
 		
-		student2.setId(1006);
+		student2.setStd_id(1006);
 		student2.setName("Ali Can");
 		student2.setGrade(10);
 		student2.getBooks().add(bookArt);
 		student2.getBooks().add(bookMath);
 		
-		student3.setId(1007);
+		student3.setStd_id(1007);
 		student3.setName("Ayse Tan");
 		student3.setGrade(12);
 		student3.getBooks().add(bookArt);
@@ -37,7 +37,7 @@ public class RunnerSave05 {
 		bookArt.getStudents().add(student2);
 		bookArt.getStudents().add(student3);
 		
-		bookArt.setId(101);
+		bookArt.setBook_id(101);
 		bookArt.setBook("Art Book");
 		bookArt.setStudents(bookArt.getStudents());
 		
@@ -45,7 +45,7 @@ public class RunnerSave05 {
 		bookMath.getStudents().add(student2);
 		bookMath.getStudents().add(student3);
 		
-		bookMath.setId(102);
+		bookMath.setBook_id(102);
 		bookMath.setBook("Math Book");
 		bookMath.setStudents(bookMath.getStudents());
 
@@ -54,6 +54,7 @@ public class RunnerSave05 {
 		Session session = sf.openSession();
 		
 		Transaction tx = session.beginTransaction();
+		
 		session.save(student1);
 		session.save(student2);
 		session.save(student3);
