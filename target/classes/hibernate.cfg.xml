@@ -19,13 +19,7 @@
         <!-- Following 2 lines are for Second Level Cache -->
         <property name="hibernate.cache.use_second_level_cache">true</property>         
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
-		<property name="hibernate.cache.provider_class">org.hibernate.cache.internal.EhcacheProvider</property>
-		
-		<mapping class = "h04.onetomany_joins.Students04"/>
-		<mapping class = "h04.onetomany_joins.Books04"/>
-		
-<!-- 		<mapping class = "h03.onetoone_joins.Students03"/>
-		<mapping class = "h03.onetoone_joins.Diary"/> -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.internal.EhcacheProvider</property> 
 
     </session-factory>
 </hibernate-configuration>
