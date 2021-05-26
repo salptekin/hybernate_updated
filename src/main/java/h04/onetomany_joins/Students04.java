@@ -24,10 +24,16 @@ public class Students04 {
 	private int grade;
 	
 	/*
-	  When you want to create "One To Many" relationship between two tables you need to use @OneToMany
-	  annotation and you need to create a list for diary.
-	  If you use @OneToOne annotation, it will add a new column into the Students03 table and name the column as 
-	  DIARY_ID
+	  1)When you want to create "One To Many" relationship between two tables you need to use @OneToMany
+	    annotation and you need to create a list for books.
+	    If you use @OneToOne annotation, it will add a new column into the Students03 table and name the column as 
+	    BOOK_ID
+	  2)orphanRemoval = true ==> Over here books are childs of students, if a student is removed, the books related with
+	                             student is removed as well.
+	  3) CascadeType.All will ensure that all persistence events such as persist, refresh, merge and remove 
+	     that occur on the parent, will be passed to the child.
+	      Note: Do not use CascadeType.All in ManyToOne because entity state transitions should propagate 
+	      from parent entities to child ones
 	*/
 	
 	//@OneToMany ==> One student has many books

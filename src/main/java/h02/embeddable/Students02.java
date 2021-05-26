@@ -15,12 +15,14 @@ public class Students02 {
 	private int grade;
 	
 	/*
-	 This will be added to the Students class to teach @embeddable annotation
-	 If you want to use a class object as variable in a class and you want to add it into your table
-	 create a new class(Courses), create variables and getters, setters, toString() method then
-	 come to the Students class and add "private Courses courses;" as variable. 
-	 Create getters and setters of courses variable in Students class
-	 */
+		 This will be added to the Students class to teach @embeddable annotation
+		 If you want to use a class object as variable in a class and you want to add it into your table
+		 1)Create a new class(Courses02), 
+		 2)Create variables, getters, setters, and toString() method 
+		 3)Come to the Students class and add "private Courses courses;" as variable. 
+		 4)Create getters and setters of courses variable in Students class
+		 5)Update toString() method for courses object
+	*/
 	private Courses02 courses;
 	
 	public int getId() {
@@ -49,7 +51,7 @@ public class Students02 {
 	}
 	@Override
 	public String toString() {
-		return "Students02 [id=" + id + ", name=" + name + ", grade=" + grade + "]";
+		return "Students02 [id=" + id + ", name=" + name + ", grade=" + grade + ", courses=" + courses + "]";
 	}
 	
 }

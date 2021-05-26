@@ -15,7 +15,7 @@ public class RunnerSaveWithEntityManager {
 	    
      2) One dis-advantage of using the standard implementation is that, it is not providing the advanced features. 
         There is not much control provided in the EntityManager APIs. 
-        Whereas, hibernate’s SessionFactory has lot of advanced features which can not done in JPA. 
+        Whereas, hibernate’s SessionFactory has lot of advanced features which can not be done in JPA. 
         
         Looking into the above points, one has to decide which one is better. 
         There is no hard rule, after all it depends on the developers requirement. 
@@ -57,17 +57,17 @@ public class RunnerSaveWithEntityManager {
 		
 		//To fetch data from the database
 		Students12 st = em.find(Students12.class, 1003);//To retrieve an object from the database
-		System.out.println(st);
+		System.out.println("==>" + st);
 		
 		//To query
 		Object st1 = em.createQuery("FROM Students12 s WHERE s.name = 'Ali Can'").getSingleResult();
 		System.out.println(st1);
 		
 		//To remove data from a table
-		em.remove(st);
+		//em.remove(st);
 		
 		//To detach data (Close its session)
-		em.detach(st);
+		//em.detach(st);
 		
 		em.getTransaction().commit();
 
