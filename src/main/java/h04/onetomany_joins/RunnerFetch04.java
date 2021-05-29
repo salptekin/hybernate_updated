@@ -30,7 +30,7 @@ public class RunnerFetch04 {
 //			System.out.println(w);
 //		}
 		
-		//Example 2: Fetch student who owns a book by using get() method		
+		//Example 2: Fetch the owner of a book whose id is 103 by using get() method		
 //		book = session.get(Books04.class, 103);
 //		System.out.println(session.get(Students04.class, book.getStudent().getId()));
 		
